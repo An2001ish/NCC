@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Toggle Animation with jQuery</title>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+    <style>
+        #animateButton{
+            padding: 10px;
+            background-color: black;
+            color: white;
+            margin-left: 50%;
+        }
+        #box {
+            width: 100px;
+            height: 100px;
+            background-color: green;
+            border-radius: 10px;
+            position: absolute;
+            top: 50px;
+            left: 50px;
+            transition: left 1s linear, top 1s linear;
+        }
+    </style>
+</head>
+<body>
+    <button id="animateButton">Animate Box</button>
+    <div id="box"></div>
+    <script>
+        $(document).ready(function() {
+            let moved = false;
+            $("#animateButton").click(function() {
+                const $box = $("#box");
+                const windowWidth = $(window).width();
+                const windowHeight = $(window).height();
+                const boxWidth = $box.width();
+                const boxHeight = $box.height();
+
+                if (!moved) {
+                    $box.css({
+                        left: (windowWidth - boxWidth) / 2 + 'px',
+                        top: (windowHeight - boxHeight) / 2 + 'px'
+                    });
+                } else {
+                    $box.css({
+                        left: '50px',
+                        top: '50px'
+                    });
+                }
+                moved = !moved;
+            });
+        });
+    </script>
+</body>
+</html>
